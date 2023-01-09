@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/
+4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css" >   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Sign_In Page</title>
+    
+</head>
+<body>
+
+<div class="container">
+        <div>
+            <h1>Sign_In</h1>
+        </div>
+        
+        
+        <form action="" method="post"
+
+        <div>
+        <label name="l6" >Login</label>
+        <input type="text" id="login" placeholder="Enter your username" class="form-control"><br><br>
+        </div>
+
+        <div class="container">
+            <label name="l7" >Password</label>
+            <input type="password" id="password" placeholder="Enter your password" class="form-control" ><br><br>
+        </div>
+        <div class="container">
+        <button class="btn btn-primary" type="submit" id="submit" name="submit" >Sign_In</button>
+        <br><br>
+        <a href="registration.html">Register</a>
+        </div>
+
+        
+        </form>
+</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#submit").on("click",function(e){
+                        e.preventDefault();
+                        $.ajax({
+                            method:"POST",
+                            url:"login2.php",
+                            data:{login:$('#login').val(),
+                            password:$('#password').val()},
+
+                            success:function(data,one,two){
+                                if(data == 1){
+                                    alert("login successfully");
+                                    window.location.assign('http://localhost:90/ManoTest/home.php');
+                                }else if(data == 10){
+                                    
+                                    
+                                    alert('wrong password'); 
+                                    
+                                }else if(data == 100){
+                                    
+                                    alert('user dosenot registered'); 
+                                
+                                }
+                            }
+                        });    
+                
+                });            
+
+            });
+
+
+        </script>
+
+</body>
+</html>
